@@ -1,0 +1,58 @@
+﻿@{
+	ViewBag.Title = "CrearProducto";
+}
+
+@model MercaditoVerde.Models.ProductoModel
+
+@{
+	List<SelectListItem> categorias = new List<SelectListItem>();
+	List<SelectListItem> unidades = new List<SelectListItem>();
+
+	foreach (string categoria in ViewBag.categorias)
+	{
+		categorias.Insert(0, (new SelectListItem { Text = categoria, Value = categoria }));
+	}
+
+	foreach (string unidad in ViewBag.unidades)
+	{
+		unidades.Insert(0, (new SelectListItem { Text = unidad, Value = unidad }));
+	}
+}
+
+<h2>CrearProducto</h2>
+
+@using (Html.BeginForm("CrearProducto", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+	@Html.AntiForgeryToken()
+
+
+<div class="form-horizontal">
+	<div class="form-group">
+		@Html.LabelFor(model => model.nombre) <br />
+		@Html.TextBoxFor(model => model.nombre, new { @class = "formcontrol", @placeholder = "Nombre del producto" })
+		@Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(model => model.categoria) <br />
+		@Html.DropDownListFor(model => model.categoria, categorias, "Categoria de producto", new { @class = "form-control" })
+		@Html.ValidationMessageFor(model => model.categoria, "", new { @class = "text-danger" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(model => model.tipoUnidad) <br />
+		@Html.DropDownListFor(model => model.tipoUnidad, unidades, "Medida para su producto", new { @class = "form-control" })
+		@Html.ValidationMessageFor(model => model.tipoUnidad, "", new { @class = "text-danger" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(model => model.precio) <br />
+		@Html.TextBoxFor(model => model.precio, new { @class = "formcontrol", @placeholder = "Precio de su producto" })
+		@Html.ValidationMessageFor(model => model.precio, "", new { @class = "text-danger" })
+	</div>
+	<div class="form-group">
+		@Html.LabelFor(model => model.imagen) <br />
+		@Html.TextBoxFor(model => model.imagen, new { @type = "file", @class = "btn btn alert-info" })
+		@Html.ValidationMessageFor(model => model.imagen, "", new { @class = "text-danger" })
+	</div>
+
+	<input type="submit" class="btn btn-block light-blue lighten-4 black-text" value="Añadir producto" /><br />
+</div>
+}
