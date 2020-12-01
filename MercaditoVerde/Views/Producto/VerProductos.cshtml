@@ -1,0 +1,18 @@
+﻿@{
+	ViewBag.Title = "VerProductos";
+}
+
+<h2>VerProductos</h2>
+
+@{
+	<ul>
+		@foreach (Tuple
+		<ActionResult, MercaditoVerde.Models.ProductoModel>
+			producto in ViewBag.productos)
+			{
+			<li>
+				<i><img src=@Url.Action(producto.Item1) style="width:100px;height:100px;" /></i>
+			</li>
+			}
+	</ul>
+}

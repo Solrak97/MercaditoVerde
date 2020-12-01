@@ -39,7 +39,39 @@ namespace MercaditoVerde.Handlers
 
         public override List<ProductoModel> ObtenerTodos()
         {
-            return new List<ProductoModel>();
+            List<ProductoModel> productos = new List<ProductoModel>();
+
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM  PRODUCTO", connection))
+            {
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection))
+                    {
+                        while (reader.Read())
+                        {
+                            productos.Add(
+                                new ProductoModel 
+                                (
+                                    reader["nombre"].ToString(),
+                                    reader["categoria"].ToString(),
+                                    reader["unidad"].ToString(),
+                                    float.Parse(reader["precio"].ToString()),
+                                    reader["imagen"] as byte[], 
+                                    reader["tipo"].ToString()
+                                )
+                            );
+                        }
+                    }
+                }
+                catch (SqlException e)
+                {
+                    throw e;
+                }
+
+            }
+
+            return productos;
         }
 
         public override void Modificar(int id, ProductoModel Nuevo)
@@ -58,14 +90,22 @@ namespace MercaditoVerde.Handlers
 
             using (SqlCommand cmd = new SqlCommand("SELECT * FROM UNIDADES", connection))
             {
-                connection.Open();
-                using (SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection))
+                try 
                 {
-                    while (reader.Read())
+                    connection.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection))
                     {
-                        unidades.Add(reader["unidad"].ToString());
+                        while (reader.Read())
+                        {
+                            unidades.Add(reader["unidad"].ToString());
+                        }
                     }
                 }
+                catch(SqlException e)
+                {
+                    throw e;
+                }
+                
             }
 
             return unidades;
@@ -77,14 +117,22 @@ namespace MercaditoVerde.Handlers
 
             using (SqlCommand cmd = new SqlCommand("SELECT * FROM  CATEGORIAS   ", connection))
             {
-                connection.Open();
-                using (SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection))
+                try
                 {
-                    while (reader.Read())
+                    connection.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection))
                     {
-                        categorias.Add(reader["categoria"].ToString());
+                        while (reader.Read())
+                        {
+                            categorias.Add(reader["categoria"].ToString());
+                        }
                     }
                 }
+                catch(SqlException e)
+                {
+                    throw e;
+                }
+                
             }
 
             return categorias;

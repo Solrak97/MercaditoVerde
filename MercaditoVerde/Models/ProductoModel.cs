@@ -30,5 +30,25 @@ namespace MercaditoVerde.Models
         [Required(ErrorMessage = "Debe elegir una cantidad de producto a comprar")]
         [Display(Name = "Ingrese la cantidad de unidades que desea comprar")]
         public int cantidad { get; set; }
+
+
+        public byte[] contenidoImagen;
+        public string tipoImagen;
+
+
+        public ProductoModel(string nombre, string categoria, string tipoUnidad, float precio, byte[] imagen, string tipo)
+        {
+            this.nombre = nombre;
+            this.categoria = categoria;
+            this.tipoUnidad = tipoUnidad;
+            this.precio = precio;
+            this.contenidoImagen = imagen;
+            this.tipoImagen = tipo;
+        }
+
+        public ProductoModel()
+        {
+
+        }
     }
 }
