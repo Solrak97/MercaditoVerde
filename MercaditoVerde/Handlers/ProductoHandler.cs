@@ -9,6 +9,26 @@ namespace MercaditoVerde.Handlers
     {
         public override void Crear(ProductoModel nuevo)
         {
+            using (SqlCommand cmd = new SqlCommand("INSERT INTO PRODUCTO(nombre, categoria, unidad, precio, imagen, tipo) " +
+                "VALUES(@nombre, @categoria, @unidad, @precio, @imagen, @tipo)", connection))
+                
+            {
+                cmd.Parameters.AddWithValue("@nombre", nuevo.nombre); 
+                cmd.Parameters.AddWithValue("@categoria", nuevo.categoria);
+                cmd.Parameters.AddWithValue("@unidad", nuevo.tipoUnidad);
+                cmd.Parameters.AddWithValue("@precio", nuevo.precio);
+                cmd.Parameters.AddWithValue("@imagen", getBytes(nuevo.imagen));
+                cmd.Parameters.AddWithValue("@tipo", nuevo.imagen.ContentType);
+                try
+                {
+                    connection.Open();
+                    cmd.ExecuteNonQuery();
+                }
+                catch (SqlException e)
+                {
+                    throw e;
+                }
+            }
 
         }
 

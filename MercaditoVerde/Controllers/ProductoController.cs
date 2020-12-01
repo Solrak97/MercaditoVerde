@@ -17,7 +17,8 @@ namespace MercaditoVerde.Controllers
         [HttpPost]
         public ActionResult CrearProducto(ProductoModel nuevo)
         {
-
+            ProductoHandler AccesoProducto = new ProductoHandler();
+            AccesoProducto.Crear(nuevo);
             return RedirectToAction("Index", "Home");
         }
     }
