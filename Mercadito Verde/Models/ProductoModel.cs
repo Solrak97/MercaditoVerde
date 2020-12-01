@@ -1,11 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Web;
-
-namespace Mercadito_Verde.Models
+﻿namespace Mercadito_Verde.Models
 {
     public class ProductoModel
     {
+        public int id { get; set; }
+        public string nombre { get; set; }
+        public string tipo { get; set; }
+        public string tipoUnidad { get; set; }
+        public float precio { get; set; }
+        public int cantidad { get; set; }
     }
 }
