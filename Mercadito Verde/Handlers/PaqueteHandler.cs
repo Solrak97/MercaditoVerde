@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using Mercadito_Verde.Models;
 
 namespace Mercadito_Verde.Handlers
 {
-    public class PaqueteHandler : Handler
+    public class PaqueteHandler : Handler<PaqueteHandler>
     {
     }
 }
