@@ -127,7 +127,6 @@
     </Compile>
     <Compile Include="Handlers\Handler.cs" />
     <Compile Include="Handlers\ProductoHandler.cs" />
-    <Compile Include="Models\FileAccess.cs" />
     <Compile Include="Models\ProductoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

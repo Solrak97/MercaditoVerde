@@ -8,11 +8,11 @@ namespace MercaditoVerde.Models
         public int id { get; set; }
 
         [Required(ErrorMessage = "Es necesario que ingrese un nombre para su producto")]
-        [Display(Name = "Ingrese el nombre de su producto")]
+        [Display(Name = "Ingrese el nombre para su producto")]
         public string nombre { get; set; }
 
         [Required(ErrorMessage = "Es necesario que ingrese una imagen para su producto")]
-        [Display(Name = "Ingrese la imagen de su producto")]
+        [Display(Name = "Seleccione una imagen para producto")]
         public HttpPostedFileBase imagen { get; set; }
 
         [Required(ErrorMessage = "Es necesario que ingrese una categoria para su producto")]
