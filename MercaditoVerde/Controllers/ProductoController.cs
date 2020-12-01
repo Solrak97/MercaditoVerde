@@ -27,14 +27,8 @@ namespace MercaditoVerde.Controllers
         public ActionResult VerProductos()
         {
             ProductoHandler AccesoProductos = new ProductoHandler();
-            List<ProductoModel> metaProductos = AccesoProductos.ObtenerTodos();
-            List<Tuple<ActionResult, ProductoModel>> productos = new List<Tuple<ActionResult, ProductoModel>>();
-
-            foreach(ProductoModel producto in metaProductos)
-            {
-                productos.Add(new Tuple<ActionResult, ProductoModel>(File(producto.contenidoImagen, producto.tipoImagen), producto));
-            }
-
+            List<ProductoModel> productos = AccesoProductos.ObtenerTodos();
+            
             ViewBag.productos = productos;
 
             return View();
