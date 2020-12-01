@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30717.126
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercaditoVerde", "MercaditoVerde.csproj", "{4E0AD00D-D58E-4F0B-9DBB-ACD3FDD30225}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MercaditoVerde.Tests", "..\MercaditoVerde.Tests\MercaditoVerde.Tests.csproj", "{185EA1C8-1B12-43C8-A3CF-1C24D3545DE4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4E0AD00D-D58E-4F0B-9DBB-ACD3FDD30225}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4E0AD00D-D58E-4F0B-9DBB-ACD3FDD30225}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4E0AD00D-D58E-4F0B-9DBB-ACD3FDD30225}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4E0AD00D-D58E-4F0B-9DBB-ACD3FDD30225}.Release|Any CPU.Build.0 = Release|Any CPU
+		{185EA1C8-1B12-43C8-A3CF-1C24D3545DE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{185EA1C8-1B12-43C8-A3CF-1C24D3545DE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{185EA1C8-1B12-43C8-A3CF-1C24D3545DE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{185EA1C8-1B12-43C8-A3CF-1C24D3545DE4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {12A0E556-0E3F-4585-922E-92D4F436A077}
+	EndGlobalSection
+EndGlobal
