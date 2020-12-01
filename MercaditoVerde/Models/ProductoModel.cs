@@ -1,5 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
-
+using System.Web;
 
 namespace MercaditoVerde.Models
 {
@@ -10,6 +10,10 @@ namespace MercaditoVerde.Models
         [Required(ErrorMessage = "Es necesario que ingrese un nombre para su producto")]
         [Display(Name = "Ingrese el nombre de su producto")]
         public string nombre { get; set; }
+
+        [Required(ErrorMessage = "Es necesario que ingrese una imagen para su producto")]
+        [Display(Name = "Ingrese la imagen de su producto")]
+        public HttpPostedFileBase imagen { get; set; }
 
         [Required(ErrorMessage = "Es necesario que ingrese una categoria para su producto")]
         [Display(Name = "Seleccione una categoria para su producto")]
