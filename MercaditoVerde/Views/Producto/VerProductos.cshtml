@@ -2,8 +2,6 @@
 	ViewBag.Title = "VerProductos";
 }
 
-<h2>VerProductos</h2>
-
 @{
 	<div class="grid">
 		@foreach (MercaditoVerde.Models.ProductoModel producto in ViewBag.productos)
@@ -26,6 +24,7 @@
 		display: grid;
 		grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 		grid-gap: 1rem;
+		grid-auto-rows: 1fr;
 	}
 
 	.grid > div {
