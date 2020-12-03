@@ -2,13 +2,15 @@
 	Layout = null;
 }
 
+
+
 <ul>
-	<li>Item 1</li>
-	<li>Item 2</li>
-	<li>Item 3</li>
-	<li>Item 4</li>
-	<li>Item 5</li>
-	<li>Item 6</li>
-	<li>Item 7</li>
-	<li>Item 8</li>
+	@{
+		foreach (MercaditoVerde.Models.ProductoModel producto in ViewBag.carrito.compras)
+		{
+			<li>@producto.nombre, @producto.cantidad, ₡@producto.precio</li>
+		}
+	}
 </ul>
+
+<h4>Total: @ViewBag.carrito.total</h4>

@@ -6,5 +6,10 @@ namespace MercaditoVerde.Models
     {
         public List<ProductoModel> compras;
         public float total;
+        
+        public CarritoModel()
+        {
+            compras = new List<ProductoModel>();    
+        }
     }
 }

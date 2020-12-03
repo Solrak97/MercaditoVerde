@@ -35,7 +35,38 @@ namespace MercaditoVerde.Handlers
 
         public override ProductoModel Obtener(int id)
         {
-            return new ProductoModel();
+            ProductoModel producto = new ProductoModel();
+
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM  PRODUCTO WHERE id = @id", connection))
+            {
+                cmd.Parameters.AddWithValue("@id", id);
+                try
+                {
+                    connection.Open();
+                    using (SqlDataReader reader = cmd.ExecuteReader(CommandBehavior.CloseConnection))
+                    {
+                        while (reader.Read())
+                        {
+                            producto = new ProductoModel
+                            (
+                                Convert.ToInt32(reader["id"]),
+                                reader["nombre"].ToString(),
+                                reader["categoria"].ToString(),
+                                reader["unidad"].ToString(),
+                                float.Parse(reader["precio"].ToString()),
+                                reader["imagen"] as byte[],
+                                reader["tipo"].ToString()
+                            );
+                        }
+                    }
+                }
+                catch (SqlException e)
+                {
+                    throw e;
+                }
+
+            }
+            return producto;
         }
 
         public override List<ProductoModel> ObtenerTodos()
