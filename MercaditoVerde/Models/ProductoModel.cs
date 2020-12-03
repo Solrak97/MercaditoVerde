@@ -36,8 +36,9 @@ namespace MercaditoVerde.Models
         public string tipoImagen;
 
 
-        public ProductoModel(string nombre, string categoria, string tipoUnidad, float precio, byte[] imagen, string tipo)
+        public ProductoModel(int id, string nombre, string categoria, string tipoUnidad, float precio, byte[] imagen, string tipo)
         {
+            this.id = id;
             this.nombre = nombre;
             this.categoria = categoria;
             this.tipoUnidad = tipoUnidad;

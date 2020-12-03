@@ -1,4 +1,5 @@
 ﻿using MercaditoVerde.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -53,6 +54,7 @@ namespace MercaditoVerde.Handlers
                             productos.Add(
                                 new ProductoModel 
                                 (
+                                    Convert.ToInt32(reader["id"]),
                                     reader["nombre"].ToString(),
                                     reader["categoria"].ToString(),
                                     reader["unidad"].ToString(),

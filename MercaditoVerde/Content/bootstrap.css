@@ -5,34 +5,14 @@
  */
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
-/*
-Custom CSS
-*/
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr 1fr));
-  grid-gap: 1rem;
-}
-
-.grid > div {
-  background: #EDE7F6;
-  padding: 1.5rem;
-  border-radius: 1rem;
-}
-
-
-
-/*
-Bootstrap
-*/
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
 body {
-  margin: 0;
+    margin: 0;
+    background-color: lightblue;
 }
 article,
 aside,
