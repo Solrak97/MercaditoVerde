@@ -29,3 +29,24 @@ function agregarProducto(id, cantidad) {
         }
     });
 }
+
+function EliminarProducto(id) {
+    var obj = {
+        id: id,
+    };
+
+    $.ajax({
+        url: "/Carrito/EliminarProducto",
+        type: 'POST',
+        data: obj,
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (response) {
+            console.log("error");
+            console.log(response);
+        }
+    });
+
+    VerCarrito();
+}

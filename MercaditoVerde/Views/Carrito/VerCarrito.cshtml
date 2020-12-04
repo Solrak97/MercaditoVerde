@@ -2,15 +2,60 @@
 	Layout = null;
 }
 
+<div class="carrito-container">
+	<div class="carrito-header">
+		<h1>Carrito</h1>
+	</div>
 
+	<table class="factura">
+		<tr>
+			<th style="text-align:left">Producto</th>
+			<th style="text-align:center">Cantidad</th>
+			<th style="text-align:left">Precio unitario</th>
+			<th style="text-align:center">Descuento</th>
+		</tr>
 
-<ul>
-	@{
-		foreach (MercaditoVerde.Models.ProductoModel producto in ViewBag.carrito.compras)
-		{
-			<li>@producto.nombre, @producto.cantidad, ₡@producto.precio</li>
+		<tr><td><br /></td></tr>
+
+		@{
+			foreach (KeyValuePair<int, MercaditoVerde.Models.ProductoModel> producto in ViewBag.carrito.compras)
+			{
+				<tr>
+					<th style="text-align:left"><div class="btn alert-danger" onclick="EliminarProducto(@producto.Value.id)">
+					<span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
+					</div> @producto.Value.nombre</th>
+					<th style="text-align:center">@producto.Value.cantidad</th>
+					<th style="text-align:left">₡@producto.Value.precio</th>
+					<th style="text-align:center">0%</th>
+					
+					
+				</tr>
+			}
 		}
-	}
-</ul>
+	</table>
 
-<h4>Total: @ViewBag.carrito.total</h4>
+	<br />
+
+	<h3 style="text-align:center">Total: ₡@ViewBag.carrito.total</h3>
+	<div class="text-center">
+		<div class="btn alert-success">Confirmar pedido</div>
+	</div>
+</div>
+
+
+<style>
+	.carrito-container {
+		padding-top:5%;
+		padding-bottom:5%;
+	}
+
+	.carrito-header {
+		text-align: center;
+	}
+
+	.factura {
+		width:80%;
+		margin-left: 10%;
+		margin-right 10%
+	}
+</style>

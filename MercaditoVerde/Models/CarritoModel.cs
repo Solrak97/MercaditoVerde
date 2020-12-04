@@ -4,12 +4,12 @@ namespace MercaditoVerde.Models
 {
     public class CarritoModel
     {
-        public List<ProductoModel> compras;
+        public Dictionary<int, ProductoModel> compras;
         public float total;
         
         public CarritoModel()
         {
-            compras = new List<ProductoModel>();    
+            compras = new Dictionary<int, ProductoModel>();    
         }
     }
 }

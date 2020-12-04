@@ -1,20 +1,24 @@
-﻿body {
-	background-color:lightgray;
-}
-
-.grid {
+﻿.grid {
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 	grid-gap: 1rem;
 	grid-auto-rows: 1fr;
 }
 
-	.grid > .TarjetaProducto {
-		background: rgb(255, 255, 255);
-		padding: 1.5rem;
-		border-radius: 1rem;
-		box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
-	}
+.grid > .TarjetaProducto {
+	background: rgb(255, 255, 255);
+	padding: 1.5rem;
+	border-radius: 1rem;
+	box-shadow: 0 0 5px -1px rgba(0,0,0,0.2);
+}
+
+.facturacion > .TarjetaProducto {
+
+}
+
+body {
+	background: rgb(229, 229, 229);
+}
 
 /* Seccion de la tarjeta en el grid */
 .TarjetaProducto > img {
@@ -51,6 +55,10 @@ navbar navbar-inverse navbar-fixed-top {
 /* Fin de la seccion */
 
 /* Seccion de modal para carrito */
+.carrito-header {
+	text-align:center;
+}
+
 
 /* The Modal (background) */
 .modal {

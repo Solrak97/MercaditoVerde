@@ -1,5 +1,5 @@
 ﻿@{
-	ViewBag.Title = "CrearProducto";
+	ViewBag.Title = "Crear Producto";
 }
 
 @model MercaditoVerde.Models.ProductoModel
@@ -21,39 +21,42 @@
 
 <h2>CrearProducto</h2>
 
-@using (Html.BeginForm("CrearProducto", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
-{
-	@Html.AntiForgeryToken()
+<div class="jumbotron">
+	@using (Html.BeginForm("CrearProducto", "Producto", FormMethod.Post, new { enctype = "multipart/form-data" }))
+	{
+		@Html.AntiForgeryToken()
 
-	<div class="form-horizontal">
-		<div class="form-group">
-			@Html.LabelFor(model => model.nombre) <br />
-			@Html.TextBoxFor(model => model.nombre, new { @class = "formcontrol", @placeholder = "Nombre del producto" }) <br />
-			@Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+		<div class="form-horizontal">
+			<div class="form-group">
+				@Html.LabelFor(model => model.nombre) <br />
+				@Html.TextBoxFor(model => model.nombre, new { @class = "formcontrol", @placeholder = "Nombre del producto" }) <br />
+				@Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(model => model.categoria) <br />
+				@Html.DropDownListFor(model => model.categoria, categorias, "Categoria de producto", new { @class = "form-control" }) <br />
+				@Html.ValidationMessageFor(model => model.categoria, "", new { @class = "text-danger" })
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(model => model.tipoUnidad) <br />
+				@Html.DropDownListFor(model => model.tipoUnidad, unidades, "Medida para su producto", new { @class = "form-control" }) <br />
+				@Html.ValidationMessageFor(model => model.tipoUnidad, "", new { @class = "text-danger" })
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(model => model.precio) <br />
+				@Html.TextBoxFor(model => model.precio, new { @class = "formcontrol", @placeholder = "Precio de su producto" }) <br />
+				@Html.ValidationMessageFor(model => model.precio, "", new { @class = "text-danger" })
+			</div>
+			<div class="form-group">
+				@Html.LabelFor(model => model.imagen) <br />
+				@Html.TextBoxFor(model => model.imagen, new { @type = "file", @class = "btn btn alert-info" }) <br />
+				@Html.ValidationMessageFor(model => model.imagen, "", new { @class = "text-danger" })
+			</div>
+
+			<div class="form-group">
+				<input type="submit" class="btn btn-block btn-success" value="Añadir producto" />
+			</div>
 		</div>
-		<div class="form-group">
-			@Html.LabelFor(model => model.categoria) <br />
-			@Html.DropDownListFor(model => model.categoria, categorias, "Categoria de producto", new { @class = "form-control" }) <br />
-			@Html.ValidationMessageFor(model => model.categoria, "", new { @class = "text-danger" })
-		</div>
-		<div class="form-group">
-			@Html.LabelFor(model => model.tipoUnidad) <br />
-			@Html.DropDownListFor(model => model.tipoUnidad, unidades, "Medida para su producto", new { @class = "form-control" }) <br />
-			@Html.ValidationMessageFor(model => model.tipoUnidad, "", new { @class = "text-danger" })
-		</div>
-		<div class="form-group">
-			@Html.LabelFor(model => model.precio) <br />
-			@Html.TextBoxFor(model => model.precio, new { @class = "formcontrol", @placeholder = "Precio de su producto" }) <br />
-			@Html.ValidationMessageFor(model => model.precio, "", new { @class = "text-danger" })
-		</div>
-		<div class="form-group">
-			@Html.LabelFor(model => model.imagen) <br />
-			@Html.TextBoxFor(model => model.imagen, new { @type = "file", @class = "btn btn alert-info" }) <br />
-			@Html.ValidationMessageFor(model => model.imagen, "", new { @class = "text-danger" })
-		</div>
-	
-		<div class="form-group">
-			<input type="submit" class="btn btn-block light-blue lighten-4 black-text" value="Añadir producto" />
-		</div>
-	</div>
-}
+	}
+</div>
+
