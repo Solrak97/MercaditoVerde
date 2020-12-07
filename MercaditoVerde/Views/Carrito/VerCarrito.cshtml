@@ -35,7 +35,7 @@
 
 					</tr>
 				}
-				
+
 			</table>
 		}
 	}
@@ -84,10 +84,15 @@
 		}
 		else
 		{
+			<h3 style="text-align:center">Ahorro: ₡@ViewBag.carrito.descuento</h3>
 			<h3 style="text-align:center">Total: ₡@ViewBag.carrito.total</h3>
-			<div class="text-center">
-				<div class="btn btn-success">Confirmar pedido</div>
-			</div>
+
+			<a href="/Carrito/ConfirmarCompra">
+				<div class="text-center">
+					<div class="btn btn-success">Confirmar pedido</div>
+				</div>
+			</a>
+			
 		}
 	}
 </div>
@@ -106,7 +111,7 @@
 	.factura {
 		width:80%;
 		margin-left: 10%;
-		margin-right 10%
+		margin-right: 10%
 	}
 
 	th, td {

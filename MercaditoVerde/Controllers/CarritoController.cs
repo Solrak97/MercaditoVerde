@@ -50,12 +50,11 @@ namespace MercaditoVerde.Controllers
                 PaqueteHandler accesoPaquete = new PaqueteHandler();
                 PaqueteModel paquete = accesoPaquete.Obtener(id);
                 paquete.cantidad = cantidad;
-                Debug.WriteLine(id);
                 (Session["carrito"] as CarritoModel).paquetes.Add(id, paquete);
             }
 
             CalcularTotal();
-          
+
         }
 
         public ActionResult VerCarrito()
@@ -77,6 +76,18 @@ namespace MercaditoVerde.Controllers
             }
         }
 
+        [HttpPost]
+        public void EliminarPaquete(int id)
+        {
+            GenerarCarrito();
+            if ((Session["carrito"] as CarritoModel).paquetes.ContainsKey(id))
+            {
+                PaqueteModel paquetes = (Session["carrito"] as CarritoModel).paquetes[id];
+                CalcularTotal();
+                (Session["carrito"] as CarritoModel).paquetes.Remove(id);
+            }
+        }
+
         public void CalcularTotal()
         {
             (Session["carrito"] as CarritoModel).total = 0;
@@ -88,6 +99,28 @@ namespace MercaditoVerde.Controllers
             {
                 (Session["carrito"] as CarritoModel).total += paqueteListado.Value.precio * paqueteListado.Value.cantidad;
             }
+
+            CalcularAhorro();
+
+        }
+
+        public void CalcularAhorro() {
+            (Session["carrito"] as CarritoModel).descuento = 0;
+            foreach (KeyValuePair<int, PaqueteModel> paqueteListado in (Session["carrito"] as CarritoModel).paquetes)
+            {
+                (Session["carrito"] as CarritoModel).descuento += paqueteListado.Value.ahorro * paqueteListado.Value.cantidad;
+            }
+        }
+
+        public ActionResult ConfirmarCompra()
+        {
+            return View();
+        }
+
+
+        public ActionResult ConfirmarCompra()
+        {
+            return View();
         }
     }
 }

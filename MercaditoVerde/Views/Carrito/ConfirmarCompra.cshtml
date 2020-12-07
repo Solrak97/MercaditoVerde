@@ -1,0 +1,37 @@
+﻿
+@{
+	ViewBag.Title = "Confirma tu compra";
+}
+
+@model MercaditoVerde.Models.DatosConfirmacionModel
+
+<div class="jumbotron">
+	<h2 class="text-center">Por favor confirme su envio</h2>
+	@using (Html.BeginForm("CrearProducto", "Producto", FormMethod.Post, new { @class = "text-center", enctype = "multipart/form-data" }))
+	{
+		@Html.AntiForgeryToken()
+		<center>
+			<div class="form-horizontal">
+				<div class="form-group">
+					@Html.LabelFor(model => model.nombre) <br />
+					@Html.TextBoxFor(model => model.nombre, new { @class = "formcontrol", @placeholder = "Cual es su nombre" }) <br />
+					@Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+				</div>
+				<div class="form-group">
+					@Html.LabelFor(model => model.direccion) <br />
+					@Html.TextAreaFor(model => model.direccion, new { @class = "formcontrol", @placeholder = "Cual es la direccion de entrega", @style= "height:50%; width:50%" })
+					<br />
+					@Html.ValidationMessageFor(model => model.direccion, "", new { @class = "text-danger" })
+				</div>
+				<div class="form-group">
+					@Html.LabelFor(model => model.telefono) <br />
+					@Html.TextBoxFor(model => model.telefono, new { @class = "formcontrol", @placeholder = "Cual es su numero de telefono" }) <br />
+					@Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+				</div>
+				<div class="text-center">
+					<input type="submit" class="btn btn-success" value="Confirmar" />
+				</div>
+			</div>
+		</center>
+	}
+</div>
