@@ -174,6 +174,7 @@
     <Content Include="Views\Producto\VerProductos.cshtml" />
     <Content Include="Views\Carrito\VerCarrito.cshtml" />
     <Content Include="Views\Producto\CrearProducto.cshtml" />
+    <Content Include="Views\Home\subNavbar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

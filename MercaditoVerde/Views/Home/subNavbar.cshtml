@@ -1,0 +1,33 @@
+﻿@{
+	Layout = null;
+}
+
+<div class="contenedorBarra">
+	<ul class="subBarra">
+		<li class="categoriaProducto">
+			Productos
+		</li>
+		@foreach (String categoria in ViewBag.categorias)
+		{
+			<li class="categoriaProducto">
+				@categoria
+			</li>
+		}
+	</ul>
+</div>
+
+@{string size = (1 * 100 / (ViewBag.categorias.Count + 1)) + "%";
+	System.Diagnostics.Debug.WriteLine(size);}
+
+<style>
+	.contenedorBarra {
+		position:fixed;
+		background-color: forestgreen;
+		width: 100%;
+	}
+
+	.categoriaProducto {
+		float:left;
+		width: @size;
+	}
+</style>

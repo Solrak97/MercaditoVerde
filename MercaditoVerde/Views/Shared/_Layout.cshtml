@@ -8,67 +8,74 @@
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
-	<div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #59886B">
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				@Html.ActionLink("Mercadito verde", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-			</div>
-			<div class="navbar-collapse collapse">
-				<ul class="nav navbar-nav">
-					<li>@Html.ActionLink("Home", "Index", "Home")</li>
-					<li>@Html.ActionLink("About", "About", "Home")</li>
-					<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-					<li><a href="javascript:;" onclick="VerCarrito()">Carrito</a></li>
-				</ul>
+	<div style="background-image: url('img_girl.jpg');">
+		<div class="navbar navbar-inverse navbar-fixed-top" style="background-color: #59886B">
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					@Html.ActionLink("Mercadito verde", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+				</div>
+				<div class="navbar-collapse collapse">
+					<ul class="nav navbar-nav">
+						<li>@Html.ActionLink("Home", "Index", "Home")</li>
+						<li>@Html.ActionLink("About", "About", "Home")</li>
+						<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+						<li><a href="javascript:;" onclick="VerCarrito()">Carrito</a></li>
+						<li>@Html.ActionLink("Crear producto", "CrearProducto", "Producto")</li>
+					</ul>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="container body-content">
-		@RenderBody()
-		<hr />
-		<footer>
-			<p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-		</footer>
-	</div>
+		<div>
+			<div class="container">
+				@{Html.RenderAction("subNavbar", "Home");}
+			</div>
+		</div>
+		<div class="container body-content">
+			@RenderBody()
+			<hr />
+			<footer>
+				<p>&copy; @DateTime.Now.Year - El mercadito verde</p>
+			</footer>
+		</div>
 
 
 
-	<div id="carrito" class="modal">
-		<span onclick="document.getElementById('carrito').style.display='none'"
-			  class="close" title="Close Modal">&times;</span>
-		<div id="contenido" class="modal-content animate">
+		<div id="carrito" class="modal">
+			<span onclick="document.getElementById('carrito').style.display='none'"
+				  class="close" title="Close Modal">&times;</span>
+			<div id="contenido" class="modal-content animate">
+
+			</div>
 
 		</div>
 
-	</div>
 
 
+		@Scripts.Render("~/bundles/jquery")
+		@Scripts.Render("~/bundles/bootstrap")
+		@Scripts.Render("~/bundles/jqueryval")
+		@RenderSection("scripts", required: false)
 
-	@Scripts.Render("~/bundles/jquery")
-	@Scripts.Render("~/bundles/bootstrap")
-	@Scripts.Render("~/bundles/jqueryval")
-	@RenderSection("scripts", required: false)
+		<link rel="stylesheet" href="~/CSS/EstilosMercadito.css" />
 
-	<link rel="stylesheet" href="~/CSS/EstilosMercadito.css" />
+		<script src="~/JS/Carrito.js"></script>
 
-	<script src="~/JS/Carrito.js"></script>
+		<script>
+			// Get the modal
+			var modal = document.getElementById('carrito');
 
-	<script>
-		// Get the modal
-		var modal = document.getElementById('carrito');
-
-		// When the user clicks anywhere outside of the modal, close it
-		window.onclick = function (event) {
-			if (event.target == modal) {
-				modal.style.display = "none";
+			// When the user clicks anywhere outside of the modal, close it
+			window.onclick = function (event) {
+				if (event.target == modal) {
+					modal.style.display = "none";
+				}
 			}
-		}
-	</script>
-
+		</script>
 </body>
 </html>
+

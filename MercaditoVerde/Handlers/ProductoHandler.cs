@@ -148,7 +148,7 @@ namespace MercaditoVerde.Handlers
         {
             List<string> categorias = new List<string>();
 
-            using (SqlCommand cmd = new SqlCommand("SELECT * FROM  CATEGORIAS   ", connection))
+            using (SqlCommand cmd = new SqlCommand("SELECT * FROM  CATEGORIAS", connection))
             {
                 try
                 {

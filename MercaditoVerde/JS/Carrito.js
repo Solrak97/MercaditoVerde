@@ -10,24 +10,33 @@
     xhr.send();
 }
 
-function agregarProducto(id, cantidad) {
-    var obj = {
-        id: id,
-        cantidad: cantidad
-    };
+function agregarProducto(id) {
+    var number = document.getElementById('number' + id);
+    var currentValue = Number(number.value) || 0;
 
-    $.ajax({
-        url: "/Carrito/AgregarProducto",
-        type: 'POST',
-        data: obj,
-        success: function (response) {
-            console.log(response);
-        },
-        error: function (response) {
-            console.log("error");
-            console.log(response);
-        }
-    });
+    if (currentValue > 0) {
+        var obj = {
+            id: id,
+            cantidad: currentValue
+        };
+
+        $.ajax({
+            url: "/Carrito/AgregarProducto",
+            type: 'POST',
+            data: obj,
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (response) {
+                console.log("error");
+                console.log(response);
+            }
+        });
+        number.value = 0;
+    }
+    else {
+
+    }
 }
 
 function EliminarProducto(id) {
@@ -49,4 +58,21 @@ function EliminarProducto(id) {
     });
 
     VerCarrito();
+}
+
+
+function Add(id) {
+    var number = document.getElementById('number' + id);
+    var currentValue = Number(number.value) || 0;
+    number.value = currentValue + 1;
+}
+
+function Sub(id) {
+    var number = document.getElementById('number' + id);
+    var currentValue = Number(number.value) || 0;
+    currentValue = currentValue - 1
+    if (currentValue < 0) {
+        currentValue = 0;
+    }
+    number.value = currentValue;
 }

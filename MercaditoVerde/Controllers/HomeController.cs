@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using MercaditoVerde.Handlers;
 using System.Web.Mvc;
 
 namespace MercaditoVerde.Controllers
@@ -24,6 +21,13 @@ namespace MercaditoVerde.Controllers
         {
             ViewBag.Message = "Your contact page.";
 
+            return View();
+        }
+
+        public ActionResult subNavbar()
+        {
+            ProductoHandler accesoProducto = new ProductoHandler();
+            ViewBag.categorias = accesoProducto.TraerCategorias(); 
             return View();
         }
     }

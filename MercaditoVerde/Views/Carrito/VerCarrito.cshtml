@@ -7,12 +7,12 @@
 		<h1>Carrito</h1>
 	</div>
 
-	<table class="factura">
+	<table class="factura" border=1 frame=void rules=rows>
 		<tr>
 			<th style="text-align:left">Producto</th>
 			<th style="text-align:center">Cantidad</th>
 			<th style="text-align:left">Precio unitario</th>
-			<th style="text-align:center">Descuento</th>
+			<th style="text-align:center">Subtotal</th>
 		</tr>
 
 		<tr><td><br /></td></tr>
@@ -21,14 +21,16 @@
 			foreach (KeyValuePair<int, MercaditoVerde.Models.ProductoModel> producto in ViewBag.carrito.compras)
 			{
 				<tr>
-					<th style="text-align:left"><div class="btn alert-danger" onclick="EliminarProducto(@producto.Value.id)">
-					<span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
-					</div> @producto.Value.nombre</th>
-					<th style="text-align:center">@producto.Value.cantidad</th>
-					<th style="text-align:left">₡@producto.Value.precio</th>
-					<th style="text-align:center">0%</th>
-					
-					
+					<td style="text-align:left">
+						<div class="btn alert-danger" onclick="EliminarProducto(@producto.Value.id)">
+							<span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
+						</div> @producto.Value.nombre
+					</td>
+					<td style="text-align:center">@producto.Value.cantidad</td>
+					<td style="text-align:left">₡@producto.Value.precio</td>
+					@{float subtotal = producto.Value.precio * producto.Value.cantidad;}
+					<td style="text-align:center">₡@subtotal</td>
+
 				</tr>
 			}
 		}
@@ -38,7 +40,7 @@
 
 	<h3 style="text-align:center">Total: ₡@ViewBag.carrito.total</h3>
 	<div class="text-center">
-		<div class="btn alert-success">Confirmar pedido</div>
+		<div class="btn btn-success">Confirmar pedido</div>
 	</div>
 </div>
 
@@ -57,5 +59,10 @@
 		width:80%;
 		margin-left: 10%;
 		margin-right 10%
+	}
+
+	th, td {
+		text-align: center;
+		padding: 15px
 	}
 </style>

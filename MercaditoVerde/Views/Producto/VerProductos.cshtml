@@ -4,21 +4,29 @@
 
 @{
 	<div class="grid">
+
 		@foreach (MercaditoVerde.Models.ProductoModel producto in ViewBag.productos)
 		{
-			string imageUrl = "data:image;base64," + Convert.ToBase64String(producto.contenidoImagen);
+			string numberID = "number" + @producto.id;
 
-			<div class="TarjetaProducto">
+			string imageUrl = "data:image;base64," + Convert.ToBase64String(producto.contenidoImagen);
+			
+			<div class="TarjetaProducto text-center">
 				<img src=@imageUrl />
 				<h4>@producto.nombre</h4>
 				<h4>@producto.tipoUnidad</h4>
 				<h4>₡@producto.precio</h4>
 
-				<div class="botonAgregar" onclick="agregarProducto(@producto.id, 1)"> agregar </div>
+				<div class="text-center">
+					<button onclick="Sub(@producto.id)" style="width:20%">−</button>
+					<input class="inputNum" type="text" value="0" id=@numberID min="0" style="width:20%"/>
+					<button onclick="Add(@producto.id)" style="width:20%">+</button>
+				</div>
+				<br />
+				<div class="botonAgregar" onclick="agregarProducto(@producto.id)"> agregar </div>
 
 			</div>
 		}
 	</div>
 }
 
-<script src="~/JS/Carrito.js"></script>
