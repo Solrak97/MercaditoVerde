@@ -3,8 +3,6 @@
 	ViewBag.Title = "Nuestros Paquetes";
 }
 
-<h2>Nuestros Paquetes</h2>
-
 @{
 	<div class="grid">
 
@@ -26,17 +24,19 @@
 					}
 				</ul>
 
-				Precio: @paquete.precio
-				Ahorro: @paquete.ahorro
+				<div>
+					Precio: ₡@paquete.precio
+					<br />
+					Ahorro: ₡@paquete.ahorro
 
-				<div class="text-center">
-					<button onclick="Sub(@paquete.id)" style="width:20%">−</button>
-					<input class="inputNum" type="text" value="0" id=@numberID min="0" style="width:20%" />
-					<button onclick="Add(@paquete.id)" style="width:20%">+</button>
+					<div class="text-center">
+						<button onclick="Sub(@paquete.id)" style="width:20%">−</button>
+						<input class="inputNum" type="text" value="0" id=@numberID min="0" style="width:20%" />
+						<button onclick="Add(@paquete.id)" style="width:20%">+</button>
+					</div>
+					<br />
+					<div class="botonAgregar" onclick="AgregarPaquete(@paquete.id)"> agregar </div>
 				</div>
-				<br />
-				<div class="botonAgregar" onclick="agregarProducto(@paquete.id)"> agregar </div>
-
 			</div>
 		}
 	</div>

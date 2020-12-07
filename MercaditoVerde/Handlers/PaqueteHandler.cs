@@ -15,7 +15,7 @@ namespace MercaditoVerde.Handlers
 
         public override PaqueteModel Obtener(int id)
         {
-            PaqueteModel paquete;
+            PaqueteModel paquete = new PaqueteModel(); ;
 
             using (SqlCommand cmd = new SqlCommand("SELECT * FROM  PAQUETE WHERE id = @id", connection))
             {
@@ -32,7 +32,7 @@ namespace MercaditoVerde.Handlers
                                 Convert.ToInt32(reader["id"].ToString()),
                                 reader["nombre"].ToString(),
                                 float.Parse(reader["precio"].ToString()),
-                                ListaProductos(Convert.ToInt32(reader["id"].ToString()))
+                                new List<ProductoModel>()
                             ) ;
                         }
                     }
@@ -43,7 +43,9 @@ namespace MercaditoVerde.Handlers
                 }
             }
 
-                return new PaqueteModel();
+            paquete.productos = ListaProductos(paquete.id);
+            paquete.autoSetAhorro();
+            return paquete;
         }
 
         public override List<PaqueteModel> ObtenerTodos()
@@ -78,6 +80,7 @@ namespace MercaditoVerde.Handlers
             foreach(PaqueteModel paquete in paquetes)
             {
                 paquete.productos = ListaProductos(paquete.id);
+                paquete.autoSetAhorro();
             }
 
             return paquetes;

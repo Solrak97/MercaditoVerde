@@ -1,8 +1,8 @@
-﻿using System.Diagnostics;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using MercaditoVerde.Models;
 using MercaditoVerde.Handlers;
 using System.Collections.Generic;
+using System.Diagnostics;
 
 namespace MercaditoVerde.Controllers
 {
@@ -19,7 +19,6 @@ namespace MercaditoVerde.Controllers
         [HttpPost]
         public void AgregarProducto(int id, int cantidad)
         {
-            Debug.WriteLine("id: " + id + " cantidad: " + cantidad);
             GenerarCarrito();
 
             if ((Session["carrito"] as CarritoModel).compras.ContainsKey(id))
@@ -34,18 +33,29 @@ namespace MercaditoVerde.Controllers
                 (Session["carrito"] as CarritoModel).compras.Add(id, producto);
             }
 
-            (Session["carrito"] as CarritoModel).total = 0;
-            foreach (KeyValuePair<int, ProductoModel> productoListado in (Session["carrito"] as CarritoModel).compras)
+            CalcularTotal();
+        }
+
+        [HttpPost]
+        public void AgregarPaquete(int id, int cantidad)
+        {
+            GenerarCarrito();
+
+            if ((Session["carrito"] as CarritoModel).paquetes.ContainsKey(id))
             {
-                if(productoListado.Value.cantidad == 0)
-                {
-                    (Session["carrito"] as CarritoModel).compras.Remove(id);
-                }
-                else
-                {
-                    (Session["carrito"] as CarritoModel).total += productoListado.Value.precio * productoListado.Value.cantidad;
-                }
+                (Session["carrito"] as CarritoModel).paquetes[id].cantidad += cantidad;
             }
+            else
+            {
+                PaqueteHandler accesoPaquete = new PaqueteHandler();
+                PaqueteModel paquete = accesoPaquete.Obtener(id);
+                paquete.cantidad = cantidad;
+                Debug.WriteLine(id);
+                (Session["carrito"] as CarritoModel).paquetes.Add(id, paquete);
+            }
+
+            CalcularTotal();
+          
         }
 
         public ActionResult VerCarrito()
@@ -64,7 +74,19 @@ namespace MercaditoVerde.Controllers
                 ProductoModel producto = (Session["carrito"] as CarritoModel).compras[id];
                 (Session["carrito"] as CarritoModel).total -= producto.precio * producto.cantidad;
                 (Session["carrito"] as CarritoModel).compras.Remove(id);
+            }
+        }
 
+        public void CalcularTotal()
+        {
+            (Session["carrito"] as CarritoModel).total = 0;
+            foreach (KeyValuePair<int, ProductoModel> productoListado in (Session["carrito"] as CarritoModel).compras)
+            {
+                (Session["carrito"] as CarritoModel).total += productoListado.Value.precio * productoListado.Value.cantidad;
+            }
+            foreach (KeyValuePair<int, PaqueteModel> paqueteListado in (Session["carrito"] as CarritoModel).paquetes)
+            {
+                (Session["carrito"] as CarritoModel).total += paqueteListado.Value.precio * paqueteListado.Value.cantidad;
             }
         }
     }

@@ -14,7 +14,7 @@ namespace MercaditoVerde.Models
         public List<ProductoModel> productos { get; set; }
         public float precio;
         public float ahorro;
-        public byte[] imagen;
+        public int cantidad;
 
         public PaqueteModel(int id, string nombre, float precio, List<ProductoModel> productos)
         {
@@ -22,14 +22,17 @@ namespace MercaditoVerde.Models
             this.nombre = nombre;
             this.id = id;
             this.productos = productos;
-
-            foreach (ProductoModel producto in productos)
-            {
-                Debug.WriteLine(producto.precio);
-                ahorro = (producto.precio * producto.cantidad) - precio; 
-            }
+            this.cantidad = 0;
         }
 
+        public void autoSetAhorro()
+        {
+            foreach (ProductoModel producto in productos)
+            {
+                ahorro += (producto.precio * producto.cantidad);
+            }
+            ahorro -= precio;
+        }
         public PaqueteModel()
         {
 
