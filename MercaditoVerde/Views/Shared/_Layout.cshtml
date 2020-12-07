@@ -24,17 +24,21 @@
 						<li>@Html.ActionLink("Home", "Index", "Home")</li>
 						<li>@Html.ActionLink("About", "About", "Home")</li>
 						<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+						<li>@Html.ActionLink("Nuestros productos", "VerProductos", "Producto")</li>
+						<li>@Html.ActionLink("Nuestros paquetes", "VerPaquetes", "Paquete")</li>
 						<li><a href="javascript:;" onclick="VerCarrito()">Carrito</a></li>
 						<li>@Html.ActionLink("Crear producto", "CrearProducto", "Producto")</li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		<div>
-			<div class="container">
-				@{Html.RenderAction("subNavbar", "Home");}
-			</div>
+		<!-- 
+	<div>
+		<div class="container">
+			@{Html.RenderAction("subNavbar", "Home");}
 		</div>
+	</div>
+		-->
 		<div class="container body-content">
 			@RenderBody()
 			<hr />
