@@ -16,17 +16,18 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					@Html.ActionLink("Mercadito verde", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+					<a class="navbar-brand tnr" href="/"><img src="~/Content/Logo.png" style="width:20%; margin-top: -5%"></a>
 				</div>
 				<div class="navbar-collapse collapse">
-					<ul class="nav navbar-nav">
-						<li>@Html.ActionLink("Home", "Index", "Home")</li>
-						<li>@Html.ActionLink("About", "About", "Home")</li>
-						<li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-						<li>@Html.ActionLink("Nuestros productos", "VerProductos", "Producto")</li>
-						<li>@Html.ActionLink("Nuestros paquetes", "VerPaquetes", "Paquete")</li>
-						<li><a href="javascript:;" onclick="VerCarrito()">Carrito</a></li>
-						<li>@Html.ActionLink("Crear producto", "CrearProducto", "Producto")</li>
+					<ul class="nav navbar-nav" style = "color:white">
+						<li><a href="/Producto/VerProductos" style="color:white;">Nuestros productos</a></li>
+						<li><a href="/Paquete/VerPaquetes" style="color:white;">Nuestros paquetes</a></li>
+						<li><a href="/Producto/CrearProducto" style="color:white;">Crear producto</a></li>
+						<li>
+							<a href="javascript:;" onclick="VerCarrito()" , style="color:white;">
+							Carrito<span class="glyphicon glyphicon-shopping-cart"  /></a>	
+						</li>
+
 					</ul>
 				</div>
 			</div>

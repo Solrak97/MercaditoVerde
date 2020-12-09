@@ -10,7 +10,7 @@
 			string numberID = "number" + @producto.id;
 
 			string imageUrl = "data:image;base64," + Convert.ToBase64String(producto.contenidoImagen);
-			
+
 			<div class="TarjetaProducto text-center">
 				<img src=@imageUrl />
 				<h4>@producto.nombre</h4>
@@ -19,7 +19,7 @@
 
 				<div class="text-center">
 					<button onclick="Sub(@producto.id)" style="width:20%">−</button>
-					<input class="inputNum" type="text" value="0" id=@numberID min="0" style="width:20%"/>
+					<input class="inputNum" type="text" value="0" id=@numberID min="0" style="width:20%" />
 					<button onclick="Add(@producto.id)" style="width:20%">+</button>
 				</div>
 				<br />
@@ -30,3 +30,24 @@
 	</div>
 }
 
+
+
+<div id="mensaje-exito" class="modal">
+	<span onclick="document.getElementById('carrito').style.display='none'"
+		  class="close" title="Close Modal">&times;</span>
+	<div id="mensaje" class="modal-content animate text-center">
+
+	</div>
+
+</div>
+
+<script>
+	// Get the modal
+	var mod = document.getElementById('mensaje-exito');
+
+	window.addEventListener("click", function (event) {
+		if (event.target == mod) {
+			mod.style.display = "none";
+		}
+	});
+</script>

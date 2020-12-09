@@ -7,7 +7,7 @@
 
 <div class="jumbotron">
 	<h2 class="text-center">Por favor confirme su envio</h2>
-	@using (Html.BeginForm("CrearProducto", "Producto", FormMethod.Post, new { @class = "text-center", enctype = "multipart/form-data" }))
+	@using (Html.BeginForm("ConfirmarCompra", "Carrito", FormMethod.Post, new { @class = "text-center", enctype = "multipart/form-data" }))
 	{
 		@Html.AntiForgeryToken()
 		<center>

@@ -2,8 +2,6 @@
 using MercaditoVerde.Models;
 using MercaditoVerde.Handlers;
 using System.Collections.Generic;
-using System.Diagnostics;
-
 namespace MercaditoVerde.Controllers
 {
     public class CarritoController : Controller
@@ -117,10 +115,12 @@ namespace MercaditoVerde.Controllers
             return View();
         }
 
-
-        public ActionResult ConfirmarCompra()
+        [HttpPost]
+        public ActionResult ConfirmarCompra(DatosConfirmacionModel datosEnvio)
         {
-            return View();
+            PedidoModel pedido = new PedidoModel(datosEnvio, (Session["carrito"] as CarritoModel));
+            Session["carrito"] = null;
+            return RedirectToAction("Index","Home") ;
         }
     }
 }

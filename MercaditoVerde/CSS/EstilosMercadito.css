@@ -1,5 +1,17 @@
-﻿.grid {
-	padding-top:1%;
+﻿.column {
+	float: left;
+	width: 33.33%;
+}
+
+/* Clear floats after the columns */
+.row:after {
+	content: "";
+	display: table;
+	clear: both;
+}
+
+.grid {
+	padding-top: 1%;
 	display: grid;
 	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
 	grid-gap: 1rem;
@@ -123,3 +135,7 @@ navbar navbar-inverse navbar-fixed-top {
 	}
 }
 /* Fin de la seccion */
+
+.tnr {
+	font-family: "Times New Roman", Times, serif;
+}

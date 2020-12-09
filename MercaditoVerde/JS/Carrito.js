@@ -6,11 +6,12 @@
             document.getElementById('carrito').style.display = 'block';
         }
     };
-    xhr.open('GET', '/Carrito/VerCarrito', true);
+    xhr.open('GET', '/Carrito/VerCarrito');
     xhr.send();
 }
 
 function AgregarProducto(id) {
+    document.getElementById('mensaje-exito').style.display = 'block';
     var number = document.getElementById('number' + id);
     var currentValue = Number(number.value) || 0;
 
@@ -33,13 +34,17 @@ function AgregarProducto(id) {
             }
         });
         number.value = 0;
+        document.getElementById('mensaje').innerHTML = 'Producto añadido con exito';
+        document.getElementById('mensaje').style = "color:green; font-size:30px";
     }
     else {
-
+        document.getElementById('mensaje').innerHTML = 'Hay un error en las cantidades ingresadas';
+        document.getElementById('mensaje').style = "color:red; font-size:30px";
     }
 }
 
 function AgregarPaquete(id) {
+    document.getElementById('mensaje-exito').style.display = 'block';
     var number = document.getElementById('number' + id);
     var currentValue = Number(number.value) || 0;
 
@@ -62,9 +67,12 @@ function AgregarPaquete(id) {
             }
         });
         number.value = 0;
+        document.getElementById('mensaje').innerHTML = 'Paquete añadido con exito';
+        document.getElementById('mensaje').style = "color:green; font-size:30px";
     }
     else {
-
+        document.getElementById('mensaje').innerHTML = 'Hay un error en las cantidades ingresadas';
+        document.getElementById('mensaje').style = "color:red; font-size:30px";
     }
 }
 
@@ -77,6 +85,7 @@ function EliminarProducto(id) {
         url: "/Carrito/EliminarProducto",
         type: 'POST',
         data: obj,
+        async: false,
         success: function (response) {
             console.log(response);
         },
@@ -98,6 +107,7 @@ function EliminarPaquete(id) {
         url: "/Carrito/EliminarPaquete",
         type: 'POST',
         data: obj,
+        async: false,
         success: function (response) {
             console.log(response);
         },

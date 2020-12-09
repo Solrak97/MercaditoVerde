@@ -17,5 +17,16 @@ namespace MercaditoVerde.Models
         [Required(ErrorMessage = "Es necesario que ingrese un numero de telefono")]
         [Display(Name = "Ingrese su numero de telefono")]
         public string telefono { get; set; }
+
+        public DatosConfirmacionModel(int id, string nombre, string direccion, string telefono)
+        {
+            this.id = id;
+            this.nombre = nombre;
+            this.direccion = direccion;
+            this.telefono = telefono;
+        }
+        public DatosConfirmacionModel()
+        {
+        }
     }
 }
