@@ -10,7 +10,7 @@
     xhr.send();
 }
 
-function agregarProducto(id) {
+function AgregarProducto(id) {
     var number = document.getElementById('number' + id);
     var currentValue = Number(number.value) || 0;
 
@@ -39,6 +39,35 @@ function agregarProducto(id) {
     }
 }
 
+function AgregarPaquete(id) {
+    var number = document.getElementById('number' + id);
+    var currentValue = Number(number.value) || 0;
+
+    if (currentValue > 0) {
+        var obj = {
+            id: id,
+            cantidad: currentValue
+        };
+
+        $.ajax({
+            url: "/Carrito/AgregarPaquete",
+            type: 'POST',
+            data: obj,
+            success: function (response) {
+                console.log(response);
+            },
+            error: function (response) {
+                console.log("error");
+                console.log(response);
+            }
+        });
+        number.value = 0;
+    }
+    else {
+
+    }
+}
+
 function EliminarProducto(id) {
     var obj = {
         id: id,
@@ -46,6 +75,27 @@ function EliminarProducto(id) {
 
     $.ajax({
         url: "/Carrito/EliminarProducto",
+        type: 'POST',
+        data: obj,
+        success: function (response) {
+            console.log(response);
+        },
+        error: function (response) {
+            console.log("error");
+            console.log(response);
+        }
+    });
+
+    VerCarrito();
+}
+
+function EliminarPaquete(id) {
+    var obj = {
+        id: id,
+    };
+
+    $.ajax({
+        url: "/Carrito/EliminarPaquete",
         type: 'POST',
         data: obj,
         success: function (response) {

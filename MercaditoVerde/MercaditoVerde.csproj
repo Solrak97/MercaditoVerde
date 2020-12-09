@@ -122,13 +122,17 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\CarritoController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PaqueteController.cs" />
     <Compile Include="Controllers\ProductoController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Handlers\Handler.cs" />
+    <Compile Include="Handlers\PaqueteHandler.cs" />
     <Compile Include="Handlers\ProductoHandler.cs" />
     <Compile Include="Models\CarritoModel.cs" />
+    <Compile Include="Models\DatosConfirmacionModel.cs" />
+    <Compile Include="Models\PaqueteModel.cs" />
     <Compile Include="Models\ProductoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -175,6 +179,8 @@
     <Content Include="Views\Carrito\VerCarrito.cshtml" />
     <Content Include="Views\Producto\CrearProducto.cshtml" />
     <Content Include="Views\Home\subNavbar.cshtml" />
+    <Content Include="Views\Paquete\VerPaquetes.cshtml" />
+    <Content Include="Views\Carrito\ConfirmarCompra.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

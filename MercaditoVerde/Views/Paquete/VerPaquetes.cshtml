@@ -1,0 +1,43 @@
+﻿
+@{
+	ViewBag.Title = "Nuestros Paquetes";
+}
+
+@{
+	<div class="grid">
+
+		@foreach (MercaditoVerde.Models.PaqueteModel paquete in @ViewBag.paquetes)
+		{
+			string numberID = "number" + @paquete.id;
+
+			<div class="TarjetaProducto text-center">
+				<h4>@paquete.nombre</h4>
+
+				<h5>Contenido:</h5>
+
+				<ul>
+					@foreach (var producto in paquete.productos)
+					{
+						<li style="text-align:justify">
+							@producto.nombre: @producto.cantidad
+						</li>
+					}
+				</ul>
+
+				<div>
+					Precio: ₡@paquete.precio
+					<br />
+					Ahorro: ₡@paquete.ahorro
+
+					<div class="text-center">
+						<button onclick="Sub(@paquete.id)" style="width:20%">−</button>
+						<input class="inputNum" type="text" value="0" id=@numberID min="0" style="width:20%" />
+						<button onclick="Add(@paquete.id)" style="width:20%">+</button>
+					</div>
+					<br />
+					<div class="botonAgregar" onclick="AgregarPaquete(@paquete.id)"> agregar </div>
+				</div>
+			</div>
+		}
+	</div>
+}
